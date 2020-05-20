@@ -1,0 +1,21 @@
+---
+version: 2
+plan:
+  project-key: MARS
+  key: ROCKET
+  name: Build the rockets
+
+# List of plan's stages and jobs
+stages:
+  - Build the rocket stage:
+    - Build
+
+#Job definition
+Build:
+  tasks:
+    - script:
+        - mkdir -p test-reports
+        - cp /Users/krebbl/Downloads/test-results.xml ./test-reports/.
+    - test-parser:
+        type: junit
+        test-results: './test-reports/*.xml' 
